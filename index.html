@@ -9,11 +9,18 @@
     <!--Este es el cdn de vue.js-->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!--Punto de inicio de la aplicación-->
+    <!--Ya el div deja de ser un elemento html y pasa a 
+        ser parte del componente creado y a este se 
+        le conocerá como template o vista del componente, aunque 
+        se puede hacer de una forma diferente.
+    -->
     <div id="app">
       <h1>{{ text }}</h1>
     </div>
     <script>
       const vm = Vue.createApp({
+        // vm es un componente
+
         //Las variables aquí definidas se podrán usar en el div que tiene como
         // id app que sería básicamente el cuerpo de la aplicación.
         data() {
