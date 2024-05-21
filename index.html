@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--Este es el cdn de vue.js-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!--Punto de inicio de la aplicación-->
+    <div id="app">
+      <h1>{{ text }}</h1>
+    </div>
+    <script>
+      const vm = Vue.createApp({
+        //Las variables aquí definidas se podrán usar en el div que tiene como
+        // id app que sería básicamente el cuerpo de la aplicación.
+        data() {
+          //Returna un objeto json
+          return {
+            text: "Hola Mundo desde Vue.js",
+          };
+        },
+      }).mount("#app"); // monta vue en la div que tiene el id app
+      console.log(vm); //Mandamos el componete de vm a la consola para ver como está construido
+    </script>
+  </body>
+</html>
