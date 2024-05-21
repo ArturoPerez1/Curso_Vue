@@ -14,13 +14,10 @@
         le conocerá como template o vista del componente, aunque 
         se puede hacer de una forma diferente.
     -->
-    <div id="app">
-      <h1>{{ text }}</h1>
-    </div>
+    <div id="app"></div>
     <script>
       const vm = Vue.createApp({
         // vm es un componente
-
         //Las variables aquí definidas se podrán usar en el div que tiene como
         // id app que sería básicamente el cuerpo de la aplicación.
         data() {
@@ -29,7 +26,9 @@
             text: "Hola Mundo desde Vue.js",
           };
         },
-      }).mount("#app"); // monta vue en la div que tiene el id app
+        //Creamos un template de vue.js, aquí podremos usar directivas de vue que se parecen mucho a las de html
+        template: `<div v-text="text"></div>`, //para no tener que usar {{]}} para interpolar colocamos la directiva v-text
+    }).mount("#app"); // monta vue en la div que tiene el id app
       console.log(vm); //Mandamos el componete de vm a la consola para ver como está construido
     </script>
   </body>
