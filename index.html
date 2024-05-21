@@ -32,4 +32,31 @@
       console.log(vm); //Mandamos el componete de vm a la consola para ver como está construido
     </script>
   </body>
+
+
+  <!--
+    Notas de las clases: 
+
+    1. ¿Qué es vm?: vm es la constante que contiene al objeto que tiene definido a nuestro 
+    componente de vue.js.
+
+    2. Interpolación:
+        1. En esta primera opción tomamos a un elemento html que en el fondo en parte del
+        componete de vue.js creado que tiene por nombre en vue como un Template. En este
+        podremos usar la interpolación {{variable]}} para obtener el valor definido en 
+        el componente, ejemplo(text en nuestro caso).
+
+        2. En esta segunda opción tenemos que podemos definir templates directamente dentro
+        del componente y además a ello usar directivas de vue que nos permiten manejar 
+        la forma en la que que se renderizará nuestro componente del lado de la vista.
+            
+            Algunas directivas:
+                1. v-text: permite añadir texto al elemnto html definido con el id en 
+                nuestro caso app.
+
+                2. v-once: permite que el contenido sea renderizado la primera vez pero 
+                que no sea modificable a lo largo de la ejecución del componente.
+
+                3. v-html: permite renderizar elementos html escritos como templates strings.
+  -->
 </html>
