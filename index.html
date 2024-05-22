@@ -8,31 +8,22 @@
   <body>
     <!--Este es el cdn de vue.js-->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <!--Punto de inicio de la aplicación-->
-    <!--Ya el div deja de ser un elemento html y pasa a 
-        ser parte del componente creado y a este se 
-        le conocerá como template o vista del componente, aunque 
-        se puede hacer de una forma diferente.
-    -->
+
     <div id="app"></div>
     <script>
       const vm = Vue.createApp({
-        // vm es un componente
-        //Las variables aquí definidas se podrán usar en el div que tiene como
-        // id app que sería básicamente el cuerpo de la aplicación.
         data() {
-          //Returna un objeto json
           return {
-            text: "Hola Mundo desde Vue.js",
+            attr: "src",
+            img: "./Imagen.jpg",
+            alt: "Falló la conexión"
           };
         },
-        //Creamos un template de vue.js, aquí podremos usar directivas de vue que se parecen mucho a las de html
-        template: `<div v-text="text"></div>`, //para no tener que usar {{]}} para interpolar colocamos la directiva v-text
-    }).mount("#app"); // monta vue en la div que tiene el id app
-      console.log(vm); //Mandamos el componete de vm a la consola para ver como está construido
+        template: `<img v-bind:[attr]="img" v-bind:alt="alt">`
+      }).mount("#app");
+      console.log(vm);
     </script>
   </body>
-
 
   <!--
     Notas de las clases: 
@@ -58,5 +49,19 @@
                 que no sea modificable a lo largo de la ejecución del componente.
 
                 3. v-html: permite renderizar elementos html escritos como templates strings.
-  -->
+    
+    3. Atributos reactivos:
+        Basicamente trata de poder modificar los atributos nativos de html usando una
+        directiva particular de vue.js que se llama v-bind.
+
+        v-bind: esta directiva permite modidificar los atributos nativos de html pudiendo
+        agregar o modificar su contenido.
+
+        A partir de la versión 3 de vue tenemso que v-bind permite el usdo de argumentos 
+        denámicos por ejemplo:
+            
+        <img v-bind:[nombreAtributo]="img" v-bind:alt="alt">
+        o
+        <img v-bind:["src"]="img" v-bind:alt="alt">
+    -->
 </html>
