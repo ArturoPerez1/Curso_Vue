@@ -14,12 +14,21 @@
       const vm = Vue.createApp({
         data() {
           return {
-            attr: "src",
-            img: "./Imagen.jpg",
-            alt: "Falló la conexión",
+            counter: 0,
+            attr: "click"//podemos colocar por defecto los eventos nativos de javascript
           };
         },
-        template: `<img v-bind:[attr]="img" v-bind:alt="alt">`,
+        methods: {
+            submit(){
+                this.counter++;
+            }
+        },
+        template: 
+        `
+            <form v-on:submit.prevent="submit">
+                <button>{{counter}}</button>
+            </form>
+        `,
       }).mount("#app");
       console.log(vm);
     </script>
@@ -63,5 +72,23 @@
         <img v-bind:[nombreAtributo]="img" v-bind:alt="alt">
         o
         <img v-bind:["src"]="img" v-bind:alt="alt">
+    
+    4. Eventos de usurio:
+        Son todos aquellos eventos derivados de una acción directa del usuario, ejemplo 
+        el click de un botón.
+
+        1. Methods: es un objeto de tipo json que nos permite definir funciones que serán
+        usadas para el manejo de eventos como por ejemplo el evento click de un botón.
+        Este se emplea ya que no se puede usar javascript puro sino lo que esté al alcance
+        de lo vue ofrece.
+
+        2. v-on: es la directiva que te permite definir un listener de eventos de manera tal
+        que puedas colocar de manera dinámica el tipo de evento como en el caso de v-bind.
+
+            Dentro de algunos eventos existen algunas directivas que nos ofrece vue.js
+            como por ejemplo el caso de submit.prevent que es básicamente lo mismo que hacer
+            un preventDefault en el methods pero directamente desde las directivas del 
+            template, A estos este prevent se le conoce como modificador del evento.
+
     -->
 </html>
