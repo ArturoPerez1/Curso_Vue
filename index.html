@@ -16,10 +16,10 @@
           return {
             attr: "src",
             img: "./Imagen.jpg",
-            alt: "Falló la conexión"
+            alt: "Falló la conexión",
           };
         },
-        template: `<img v-bind:[attr]="img" v-bind:alt="alt">`
+        template: `<img v-bind:[attr]="img" v-bind:alt="alt">`,
       }).mount("#app");
       console.log(vm);
     </script>
