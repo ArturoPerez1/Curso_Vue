@@ -14,27 +14,24 @@
       const vm = Vue.createApp({
         data() {
           return {
-            counter: 0,
-            attr: "click"//podemos colocar por defecto los eventos nativos de javascript
+            text: "Hola vue",
           };
         },
-        methods: {
-            submit(){
-                this.counter++;
-            }
-        },
-        template: 
-        `
-            <form v-on:submit.prevent="submit">
-                <button>{{counter}}</button>
-            </form>
+        template: `
+          <p>{{text}}</p>
+          <input type="text" v-model="text">
         `,
       }).mount("#app");
-      console.log(vm);
     </script>
   </body>
 
   <!--
+    Nota tips:
+      1. Para los eventos y atributos podemos usar shorthand que nos facilitan la existencia
+      en vez de usar: 
+        v-on:evento="function" usamos @evento="function" 
+        v-bind:atributo="contenido" usamos :atributo="contenido"
+
     Notas de las clases: 
 
     1. ¿Qué es vm?: vm es la constante que contiene al objeto que tiene definido a nuestro 
@@ -89,6 +86,15 @@
             como por ejemplo el caso de submit.prevent que es básicamente lo mismo que hacer
             un preventDefault en el methods pero directamente desde las directivas del 
             template, A estos este prevent se le conoce como modificador del evento.
+    
+    5. Inputs reactivos:
+        Son aquellos inputs que pueden interactuar o modificar directamente el valor interno
+        del componente. Para ello usamos eventos o por le contrario podemos usar la directiva
+        v-model que nos permite sincronizar la vista con el modelo directamente ya que combina 
+        internamente a v-on con v-bind.
 
+        Este v-model nos permite saltarnos el hecho de tener que manejar los eventos 
+        directamente en los metodos del tipo event handler. En coclusión v-model te permite hacer
+        lo que vue.js ofrece directo pero ojo solo está limitado a inputs, selects y textareas
     -->
 </html>
