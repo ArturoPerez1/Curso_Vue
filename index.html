@@ -14,12 +14,22 @@
       const vm = Vue.createApp({
         data() {
           return {
-            text: "Hola vue",
+            firstName: "Arturo",
+            lastName: "Perez",
+            now: new Date(),
           };
         },
+        computed: {
+          fullName(){
+            return this.firstName +" "+ this.lastName;
+          },
+          today(){
+            return this.now.toLocaleDateString();
+          }
+        },
         template: `
-          <p>{{text}}</p>
-          <input type="text" v-model="text">
+          <div>{{ fullName }}</div>
+          <div>{{today}}</div>
         `,
       }).mount("#app");
     </script>
@@ -96,5 +106,14 @@
         Este v-model nos permite saltarnos el hecho de tener que manejar los eventos 
         directamente en los metodos del tipo event handler. En coclusión v-model te permite hacer
         lo que vue.js ofrece directo pero ojo solo está limitado a inputs, selects y textareas
+    
+      6. Propiedades Compuestas:
+        La principal diferencia entre methods y computed es entonces: Cuando necesitamos 
+        cambiar la data debemos usar methods, pero cuando necesitamos 
+        cambiar la presentación de los datos existentes usamos computed.
+
+        Methods == Logica de eventos
+        Computed == Logica de data en general
+
     -->
 </html>
