@@ -14,22 +14,28 @@
       const vm = Vue.createApp({
         data() {
           return {
-            firstName: "Arturo",
-            lastName: "Perez",
-            now: new Date(),
+            text: "Puerta cerrada",
+            open: false
           };
         },
-        computed: {
-          fullName(){
-            return this.firstName +" "+ this.lastName;
-          },
-          today(){
-            return this.now.toLocaleDateString();
+        watch: {
+          open(value){
+            if(value){
+              this.text = "Puerta abierta"
+            } else{
+              this.text = "Puerta cerrada"
+            }
           }
         },
-        template: `
-          <div>{{ fullName }}</div>
-          <div>{{today}}</div>
+        computed: {
+          label(){
+            return this.open ?  "Cerrar" : "Abrir";
+          }
+        },
+        template: 
+        `
+          <div>{{text}}</div>
+          <button @click="open = !open">{{label}}</button>
         `,
       }).mount("#app");
     </script>
@@ -114,6 +120,15 @@
 
         Methods == Logica de eventos
         Computed == Logica de data en general
+      
+      7. Watchers:
+        Los watchers o observadores te permiten estar observar los diferentes cambios de estados
+        de una variable reactiva de tal manera que puedas realizar procesos a partir de esos 
+        cambios
 
+        reglas:
+          1. el whatcher tiene que tener el mismo nombre de la variable que se quiere escuchar
+          2. todo watcher puede recibir dos argumentos cuando son invocados en este caso son
+          Actualvalue y AnteriorValue
     -->
 </html>
